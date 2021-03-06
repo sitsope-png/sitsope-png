@@ -1,0 +1,566 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>YTb Video Downloader</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<style>
+body {
+	font-family: 'Varela Round', sans-serif;
+}
+.form-control {
+	box-shadow: none;
+	font-weight: normal;
+	font-size: 13px;
+}
+.navbar {
+	background: #fff;
+	padding-left: 16px;
+	padding-right: 16px;
+	border-bottom: 1px solid #dfe3e8;
+	border-radius: 0;
+}
+.nav-link img {
+	border-radius: 50%;
+	width: 36px;
+	height: 36px;
+	margin: -8px 0;
+	float: left;
+	margin-right: 10px;
+}
+.navbar .navbar-brand {
+	padding-left: 0;
+	font-size: 20px;
+	padding-right: 50px;
+}
+.navbar .navbar-brand b {
+	color: #33cabb;
+}
+.navbar .form-inline {
+	display: inline-block;
+}
+.navbar a {
+	color: #888;
+	font-size: 15px;
+}
+.search-box {
+	position: relative;
+}
+.search-box input {
+	padding-right: 35px;
+	border-color: #dfe3e8;
+	border-radius: 4px !important;
+	box-shadow: none
+}
+.search-box .input-group-text {
+	min-width: 35px;
+	border: none;
+	background: transparent;
+	position: absolute;
+	right: 0;
+	z-index: 9;
+	padding: 7px;
+	height: 100%;
+}
+.search-box i {
+	color: #a0a5b1;
+	font-size: 19px;
+}
+.navbar .sign-up-btn {
+	min-width: 110px;
+	max-height: 36px;
+}
+.navbar .dropdown-menu {
+	color: #999;
+	font-weight: normal;
+	border-radius: 1px;
+	border-color: #e5e5e5;
+	box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.navbar a, .navbar a:active {
+	color: #888;
+	padding: 8px 20px;
+	background: transparent;
+	line-height: normal;
+}
+.navbar .navbar-form {
+	border: none;
+}
+.navbar .action-form {
+	width: 280px;
+	padding: 20px;
+	left: auto;
+	right: 0;
+	font-size: 14px;
+}
+.navbar .action-form a {
+	color: #33cabb;
+	padding: 0 !important;
+	font-size: 14px;
+}
+.navbar .action-form .hint-text {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+.navbar .btn-primary, .navbar .btn-primary:active {
+	color: #fff;
+	background: #33cabb !important;
+	border: none;
+}
+.navbar .btn-primary:hover, .navbar .btn-primary:focus {
+	color: #fff;
+	background: #31bfb1 !important;
+}
+.navbar .social-btn .btn, .navbar .social-btn .btn:hover {
+	color: #fff;
+	margin: 0;
+	padding: 0 !important;
+	font-size: 13px;
+	border: none;
+	transition: all 0.4s;
+	text-align: center;
+	line-height: 34px;
+	width: 47%;
+	text-decoration: none;
+}
+.navbar .social-btn .facebook-btn {
+	background: #507cc0;
+}
+.navbar .social-btn .facebook-btn:hover {
+	background: #4676bd;
+}
+.navbar .social-btn .twitter-btn {
+	background: #64ccf1;
+}
+.navbar .social-btn .twitter-btn:hover {
+	background: #4ec7ef;
+}
+.navbar .social-btn .btn i {
+	margin-right: 5px;
+	font-size: 16px;
+	position: relative;
+	top: 2px;
+}
+.or-seperator {
+	margin-top: 32px;
+	text-align: center;
+	border-top: 1px solid #e0e0e0;
+}
+.or-seperator b {
+	color: #666;
+	padding: 0 8px;
+	width: 30px;
+	height: 30px;
+	font-size: 13px;
+	text-align: center;
+	line-height: 26px;
+	background: #fff;
+	display: inline-block;
+	border: 1px solid #e0e0e0;
+	border-radius: 50%;
+	position: relative;
+	top: -15px;
+	z-index: 1;
+}
+.navbar .action-buttons .dropdown-toggle::after {
+	display: none;
+}
+.form-check-label input {
+	position: relative;
+	top: 1px;
+}
+@media (min-width: 1200px){
+	.form-inline .input-group {
+		width: 300px;
+		margin-left: 30px;
+	}
+}
+@media (max-width: 768px){
+	.navbar .dropdown-menu.action-form {
+		width: 100%;
+		padding: 10px 15px;
+		background: transparent;
+		border: none;
+	}
+	.navbar .form-inline {
+		display: block;
+	}
+	.navbar .input-group {
+		width: 100%;
+	}
+}
+</style>
+<script>
+// Prevent dropdown menu from closing when click inside the form
+$(document).on("click", ".action-buttons .dropdown-menu", function(e){
+	e.stopPropagation();
+});
+</script>
+
+
+
+    <!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+</head>
+<body >
+
+<nav class="navbar  navbar-expand-lg navbar-light bg-primary">
+
+     <a class="navbar-brand" href="https://www.powr.io/powr.js?platform=bootstrap">
+    <img src="{% static 'P.png' %}" width="100" height="80" alt="" class="social rounded"/>
+  </a>
+	<a href="" class="navbar-brand font-weight-bold ">TransLoader</a>
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!-- Collection of nav links, forms, and other content for toggling -->
+	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+		<div class="navbar-nav">
+			<a href="{% url 'first' %}" class="nav-item nav-link text-light" >Home</a>
+
+			<div class="nav-item dropdown">
+				<a href="" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle text-light">Services</a>
+				<div class="dropdown-menu">
+					<a href="" class="dropdown-item"> Transcrib Youtube Video for Download</a>
+
+					<a href="" class="dropdown-item">Youtube video Transcrib online</a>
+					<a href="" class="dropdown-item">Transcription your own Video</a>
+                    <a href="" class="dropdown-item"> Languages avalaibles</a>
+                </div>
+            </div>
+
+		</div>
+
+
+		<div class="navbar-nav ml-auto action-buttons dropdown">
+
+			<div class="nav-item dropdown">
+				<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4 bg-primary rounded login-btn text-light fa fa-user-circle-o">     Login</a>
+                <div class="dropdown-menu action-form">
+					<form action="" method="post">
+							{% csrf_token %}
+						<p class="hint-text">Sign in with your social media account</p>
+						<div class="form-group social-btn clearfix">
+							<a href="#" class="btn btn-secondary facebook-btn "><i class="fa fa-facebook"></i> Facebook</a>
+							<a href="#" class="btn btn-secondary twitter-btn "><i class="fa fa-twitter"></i> Twitter</a>
+							<!--a href="#" class="btn bg-danger gmail-btn "><i class="fa fa-gmail"></i> Gmail</a-->
+									<!--a href="#" class="btn btn-primary google-btn float-left"><i class="fa fa-google"></i> Google</a-->
+						</div>
+						<div class="or-seperator"><b>or</b></div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Username" name="username" required="required">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="Password" name="password" required="required">
+						</div>
+						<input type="submit" class="btn btn-primary btn-block" value="Login">
+						<div class="text-center mt-2">
+						</div>
+						{%for message in messages %}
+						{{message}}
+						{% endfor %}
+					</form>
+                </div>
+			</div>
+
+
+
+			<div class="nav-item dropdown">
+
+				<a href="#" data-toggle="dropdown" class=" text-light fa fa-sign-in btn bg-primary dropdown-toggle sign-up-btn">  Sign up</a>
+                <div class="dropdown-menu action-form">
+					<form action="" method="post">
+						<h4 class="hint-text">Create your account!</h4>
+						<center><b class="hint-text">Username</b>
+						<div class="form-group">
+							{% csrf_token %}
+							 {{form2.username}}
+						</div>
+						<b class="hint-text">Adress Mail</b>
+						<div class="form-group">
+							{{form2.email}}
+						</div>
+                     <b class="hint-text">Password</b>
+						<div class="form-group">
+
+							{{form2.password1}}
+						</div>
+                        <b class="hint-text">Confirm Password</b>
+						<div class="form-group">
+
+							{{form2.password2}}
+						</div>
+						<div class="form-group">
+							<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
+						</div>
+							{{form2.errors}}
+						<input type="submit" class="btn btn-primary btn-block" value="Sign up">
+							</center>
+					</form>
+				</div>
+			</div>
+
+        </div>
+	</div>
+</nav>
+
+
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js" integrity="sha512-5+FrEmSijjxRArJWeLcCIEgoQYAgU0gSa9MgNMN+tVSS+MPZsEk9a7OkPZr7AzjNJng1Kl+tXOQVtJcsU+Ax0w==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+
+
+ <style>
+        #id_language {
+            width: 20%;
+        }
+        #conteneur {
+  height: auto; /* Par défaut. Prend la hauteur du contenu. */
+  border: 3px solid black;
+
+}
+</style>
+
+
+
+<main id="bg" class="navbar-fixed-top border border-secondary w-100 p-5
+" style="background-image: url('{% static 'mysite/images/save.png' %}')" >
+
+  <div class="container mt-5 ">
+
+      <center><div class="row "></div>
+<div class="containe-fluid text-italic text-light ">
+
+
+     <div/>
+            <b class="text-light bg-dark rounded w-25 p-1 col-sm-12 col-xs-12 col-sm-12">Youtube Video</b>
+    </div></center>
+
+
+<div class="container mt-5"></div>
+<div class="container mt-5"></div>
+     <center class="container mt-5">
+<div class="container mt-5"></div>
+
+
+
+
+<section>
+    <form action="" method="POST">
+   <!--div class="form-group "-->
+
+<!--div form-group-append  class="container mt-5">
+{% if messages %}
+    {%for message in messages %}
+<div class="container mt-5 d-flex justify-content-between  w-20 p-4 alert-{{ message.tags}} m-2"
+     id="msg"  role="alert">
+
+						{{message}}
+
+</div>
+       		{% endfor %}
+     {% endif %}
+     </div-->
+  <input id="conteneur"  name="url" type="text" class=" form-control rounded " placeholder="Enter Youtube URL" style="width: 65%" required="required">
+
+ <div form-group-append class="w-100 p-3"  class="bg-dark text-light"  method="POST" placeholder="language">
+ <div class="container mt-5"></div>
+ <h5 class="text-white ">Your Language:</h5>
+ <div class="container-fluid col-xs-4 col-md-8 col-sm-12 ">
+          <center>
+              {% csrf_token %}
+              {{ form.as_p }}
+          </center>
+</div>
+	<div class="nav-item dropdown">
+				<a href="#" data-toggle="dropdown" class="nav-link  mr-4 bg-primary rounded login-btn text-light fa ">     Submit</a>
+                <div class="dropdown-menu action-form">
+
+						<div class="form-group">
+							<p class="text-danger">Connect to your account !!!<b/>
+						</div>
+
+
+					</form>
+                </div>
+			</div>
+
+    </div>
+       </div>
+       </form>
+</section>
+         </center>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</main>
+
+<hr>
+
+<div>
+
+<div class="container mt-5">
+  <center>  <h3 class="text-light bg-dark w-50 p-2 rounded "> Guide</h3> </center>
+
+
+<div class="container mt-5" ></div>
+   <h4 class="text-bold  font-size: 13px" >Connect to your account or create another One!!!</h4>
+    <b>1--Enter the url of the youtube video to download</b>
+    <br>
+  <b>2--Choose your language with dropdown button name <a href="https://cloud.google.com/translate/docs/languages">"language"</a></b>
+     <br>
+  <b>3--Click on button "submit"</b>
+     <br>
+    <c>
+   <b>You have another page which showing you the embed of the Youtube Video</b>
+     <br>
+  <b>4--Click on the Download button according to the quality you want and wait for to the final video.</b>
+ <br>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('#id_language').select2({
+            ajax: {
+                url: '{% url 'home' %}',
+                dataType: 'json',
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {id: item.id, text: item.title};
+                        })
+                    };
+                }
+            },
+            minimumInputLength: 1
+        });
+    });
+</script>
+
+
+<script>
+    setTimeout (function(){
+    if ($('#msg').length > 0){
+    $('#msg').remove();
+    }
+    }, 2000)
+</script>
+
+<div class="container mt-5  d-flex justify-content-between border border-secondary w-100 p-5" id="bg" name="cont" style="background-image: url('{% static 'mysite/images/.png' %}')">
+    <section class="">
+      <div class="row d-flex justify-content-between">
+
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0 w-150 p-3 my-3 rounded bg-primary" >
+            <a href="" class="text-light"><h4>Download in any language</h4></a>
+  <b>You can Download Youtube videos on your
+  own language</b>
+        </div>
+
+  <div class="col-lg-2 col-md-12 mb-4 mb-md-0 w-150 p-3 my-3 rounded bg-primary">
+      <a href="" class="text-light"><h4>Real Time Youtube video Processing</h4></a>
+     <b>For Video online(Youtube)</b>
+     </div>
+
+   <div class="col-lg-2 col-md-12 mb-4 mb-md-0 w-150 p-3 my-3 rounded bg-primary">
+<a href="" class="text-light"><h4>Translate your own Video</h4></a>
+  <b>Upload your own video and get Translate version</b>
+   </div>
+
+      </div>
+    </section>
+
+</div>
+
+
+
+
+<footer class="bg-primary text-dark" style="">
+  <!-- Grid container -->
+	<div class=" container mt-5">
+
+ <a class="navbar-brand " href="https://www.powr.io/powr.js?platform=bootstrap">
+    <img src="{% static 'P.png' %}" width="100" height="80" alt="" class="social rounded"/>
+	   <a  class="navbar-brand font-weight-bold text-dark"> TransLoader</a>
+  </a>
+  <div class="container p-0 pb-0 text-center">
+  <!-- Section: Social media -->
+    <!--section class="mb-4"-->
+
+      <!-- Facebook -->
+      <a
+        class="btn btn-primary btn-floating m-1 btn-youtube"
+        style="background-color: #3b5998;"
+        href="https://www.youtube.com/channel/UCalyckFAqUCmsOYLPhuzMbw/featured" role="button"><i class="fa fa-youtube"></i></a>
+
+      <!-- Twitter -->
+      <a
+        class="btn btn-primary btn-floating m-1 btn-twitter"
+        style="background-color: #55acee;"
+        href="http://twitter.com/"
+        role="button"
+        ><i class="fa fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+
+
+      <!-- Instagram -->
+      <a
+        class="btn btn-primary btn-social-icon btn-floating m-1  btn-instagram"
+		style="background-color: #ac2bac;" href="https://www.instagram.com/sekpona27/" role="button"><i class="fa fa-instagram"></i></a>
+
+
+      <!-- Linkedin -->
+      <a class="btn btn-primary  btn-social-icon btn-facebook btn-floating m-1"
+		 style="background-color: #0082ca;" href="https://www.facebook.com/kokousitsope.sekpona.7" role="button"><i class="fa fa-facebook"></i></a>
+      <!-- Github -->
+      <a
+        class="btn btn-primary btn-floating m-1 btn-linkedin"
+        style="background-color: #333333;" href="http://www.linkedin.com/in/sitsope-sekpona-240429208"
+        role="button"><i class="fa fa-linkedin"></i></a>
+
+
+  <!-- Grid container -->
+ </div>
+    </div>
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <p class="text-white">© More than 100 Languages required:</btext-white>
+    <a class="text-white" href="https://cloud.google.com/translate/docs/languages">See Documentation</a>
+  </div>
+  <!-- Copyright -->
+</footer>

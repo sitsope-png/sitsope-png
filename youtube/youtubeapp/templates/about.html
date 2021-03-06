@@ -1,0 +1,156 @@
+{% extends  'main.html' %}
+
+
+{% block contenu %}
+<hr>
+<div class="container mt-5"></div>
+{% load static %}
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+
+</style>
+
+<body>
+
+
+<div class="about-section" id="bg" style="background-image: url('{% static 'mysite/images/pexels.jpg' %}') width:100% p-5">
+  <h1>About Us</h1>
+  <p><b>Welcome to Youtube video translator site.</b></p>
+  <p>Translate Video in your own languages.</p>
+</div>
+<div class="container mt-5"></div>
+<center><h1 style="text-align:center"><b>Our Team</b></h1></center>
+
+
+
+
+
+
+<div class="container mt-5  d-flex justify-content-between border border-secondary w-100 p-5" >
+
+    <section class="">
+      <center>
+      <div class="row text-center d-flex justify-content-between">
+
+
+  <div class="col-lg-4 col-md-12 mb-4 mb-md-0 w-100 p-3 my-3 rounded ">
+         <div class="card">
+      <img src="static/mysite/images/b.jpg" alt="Voice Assistance" style="width:100%">
+      <div class="container">
+        <h2>IA voice</h2>
+        <p class="title">IA Machine</p>
+        <p>Natural language processing.</p>
+        <p>sekokou27@gmail.com</p>
+        <p><button href="https://www.youtube.com/watch?v=rP9u25GhhVQ" class="button bg-primary">More</button></p>
+      </div>
+    </div>
+        </div>
+
+
+
+  <div class="col-lg-4 col-md-12 mb-4 mb-md-0 w-100 p-3 my-3 rounded ">
+      <div class="card">
+      <img src="static/mysite/images/D.png" alt="Sitsopé " style="width:100%">
+      <div class="container">
+        <h2>Sekpona Sitsopé</h2>
+        <p class="title">Develloper</p>
+        <p>Contact Me here.</p>
+        <p>sekokou27@gmail.com</p>
+        <p><button href="" class="button bg-primary">More</button></p>
+      </div>
+    </div>
+     </div>
+
+
+   <div class="col-lg-4 col-md-12 mb-4 mb-md-0 w-100 p-3 my-3 rounded ">
+     <div class="card">
+      <img src="static/mysite/images/20.png" alt="Youtube" style="width:100%">
+      <div class="container">
+        <h2>Youtube  Bot</h2>
+        <p class="title">Youtube Data Generator</p>
+        <p>Youtube Data processing.</p>
+        <p>youtube.com</p>
+        <p><button href="https://youtu.be/TE66McLMMEw" class="button bg-primary">More</button></p>
+      </div>
+    </div>
+   </div>
+
+      </div>
+        </center>
+    </section>
+
+</div>
+
+
+
+
+<div class="container mt-5"></div>
+
+
+
+
+<h1><center>Our Services </center></h1>
+<hr>
+<div class="container mt-5">
+<center><h4>We use a form of artificial intelligence to translate all videos from Youtube into all languages.</h4>
+<h4>A live version available allowing you to translate videos in real time.</h4>
+<h4>Enter the video link and select our language; wait for the video to download and use it ...</h4></center>
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+</body>
+
+
+
+
+
+{% endblock %}
