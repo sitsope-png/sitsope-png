@@ -131,10 +131,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #MEDIA_URL = '/media/'
 
-PAYPAL_RECEIVER_EMAIL = 'sitsope10@gmail.com'
+PAYPAL_RECEIVER_EMAIL = '29doj5324894@business.example.com' \
+                        ''
 #PAYPAL_CLIENT_ID= os.environ.get('AWkvhPGLo9MejtBSwwrs7DVT3Z1PEX6Au_aZifXv50CUYPev-Nvq0p0_uOwNiXEH6xe74xQ7A_AAX4Nf')
 #PAYPAL_CLIENT_SECRET = os.environ.get('EJ5aVbg8WZ1gEw6bywR2nBMfyYEK97ItArtZmYi74mV4dePH6P5I6oOmEjECdA7YCFGXl_6YYchSx-9k')
-PAYPAL_TEST = False
+PAYPAL_TEST = True
 
 #gmil setting
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'

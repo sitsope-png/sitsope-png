@@ -36,8 +36,8 @@ class contactformemail(forms.Form):
 
 
 subscription_options = [
-    ('1-Day subscription', '$1 USD/Day'),
-    ('1-Month subscription', '$10 USD/Month'),
+    ('Day subscription', '$1 USD/Day'),
+    ('Month subscription', '$10 USD/Month'),
 ]
 
 

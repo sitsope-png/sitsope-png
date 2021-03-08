@@ -138,7 +138,7 @@ def index(request):
             message = form1.cleaned_data['message']
             send_mail(subject, message, frommail, ['sekokou27@gmail.com', frommail])
             return redirect('home')
-            messages.success(request, "Your message is  send!")
+            messages.success(request, "Your message has been sent successfully!")
         else:
             messages.error(request, "Some error is detected, please try again")
     return render(request,'index.html',{'form': form, 'form1':form1})
@@ -243,11 +243,11 @@ def process_subscription(request):
     subscription_plan = request.session.get('subscription_plan')
     host = request.get_host()
 
-    if subscription_plan == '1-Day subscription':
+    if subscription_plan == 'Day subscription':
         price = "1"
         billing_cycle = 1
         billing_cycle_unit = "D"
-    elif subscription_plan == '1-Month subscription':
+    elif subscription_plan == 'Month subscription':
         price = "10"
         billing_cycle = 1
         billing_cycle_unit = "M"

@@ -273,40 +273,39 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
 <main id="bg" class="border border-secondary w-100 p-5
 " style="background-image: url('{% static 'mysite/images/andrea.png' %}') " >
 
-<div class="powr-paypal-donate-button" id="c06278c3_1611089789"></div><script src="https://www.powr.io/powr.js?platform=bootstrap"></script>
-<div class="mt-5">
+<div class="powr-paypal-donate-button" id="c06278c3_1611089789"></div><div src="https://www.powr.io/powr.js?platform=bootstrap"></div>
+
       <div class="container mt-5"></div>
         <center>
-            <b class="text-light bg-dark rounded w-25 p-1">Youtube Video</b> </center>
-    </div>
+            <!--b class="text-light bg-dark rounded w-25 p-1">Youtube Video</b--> </center>
 
-  <center class="container mt-5">
+
+
 <div class="container mt-5"></div>
-            <div class="container mt-5    w-100 p-5" id="bg"  style=""  >
+    <div class="container mt-5"></div>
 <center>
+<div class=" align-baseline">
+
+    <div class="col-xs-12 col-lg-4 col-md-12  mb-md-0  text-dark rounded bg-primary w-25 p-2 fa fa-paypal" > Pay Pal</div>
 
 
+    <div class="col-xs-12 col-lg-4 col-md-12  mb-md-0  text-light bg-dark rounded w-25 p-2 fa fa-credit-card"> Bank Card</div>
 
+</div>
 
-    <form action="" method="post">
-
-
-				<a href="" data-toggle="dropdown" class=" text-light fa fa-sign-in btn bg-primary  sign-up-btn">Paypal</a>
-
+<hr>
                       {% csrf_token %}
-                      {% for r in f %}
-					<a href="" class="dropdown-item"> {{ r }}</a>
-                    {% endfor  %}
+        <div class="container mt-5">
+                      {{ f }}
 
+        </div>
+        <div class="container mt-5">
                 <input class="bg-primary rounded" type="submit" value="Subscribe">
-
-
-
 			</div>
 
+</center>
 
 
-    </form>
 
 
 
